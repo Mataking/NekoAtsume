@@ -22,6 +22,9 @@ import com.sprsec.model.Chat;
 import com.sprsec.model.User;
 import com.sprsec.service.UserService;
 
+
+//classe de navigation au travers des url concernant la navigation global sur le site
+
 @Controller
 public class LinkNavigation {
 
@@ -30,11 +33,15 @@ public class LinkNavigation {
     @Autowired
     UserService userService;
 
+    //Servlet
+    //Affiche l'accueil du site quand l'url contient /index
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView indexPage() {
         return new ModelAndView("accueil");
     }
 
+    //Servlet
+    //Affiche l'accueil du site quand l'url contient /index
     @RequestMapping(value = "/accueil", method = RequestMethod.GET)
     public String ModerationPage(Model model, Principal principal) {
         model.addAttribute("title", "Moderation Page");
@@ -52,11 +59,15 @@ public class LinkNavigation {
         return "accueil";
     }
 
+    //Servlet
+    //Affiche l'accueil de navigation pour un utilisateur admin
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public ModelAndView firstAdminPage() {
         return new ModelAndView("admin-first");
     }
 
+    //Servlet
+    //Affiche la liste de tous les utilisateur enregistrés sur dans la bdd
     @RequestMapping(value = "/admin-users", method = RequestMethod.GET)
     public String listUser(Model model) {
         List<User> users = userService.listeUser();
@@ -64,6 +75,7 @@ public class LinkNavigation {
         return "admin-users";
     }
 
+    //Servlet
     //********ADD USER
     @RequestMapping(value = {"/newuser"}, method = RequestMethod.GET)
     public String newUser(ModelMap model) {
@@ -97,7 +109,10 @@ public class LinkNavigation {
 
         return "edituser";
     }
-
+    
+    //Servlet
+    //Affiche les information de l'utilisateur 
+    //l'utilisateur peut sur cette page modifier son mot de passe
     @RequestMapping(value = {"/edituser-{login}"}, method = RequestMethod.POST)
     public String postEdit(Model model, Principal principal) {
         String userName = principal.getName();
@@ -117,6 +132,9 @@ public class LinkNavigation {
 		return "redirect:/persons";
 	}
      */
+    
+    //Servlet
+    //permet a l'admin de supprimer/bannir un utilisateur
     @RequestMapping("/supprimer-{id}")
     public String removeUser(@PathVariable("id") int id, Model model) {
         userService.deleteUser(id);

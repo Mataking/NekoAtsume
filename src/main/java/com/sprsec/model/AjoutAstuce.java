@@ -14,9 +14,9 @@ import javax.persistence.Table;
 @Table(name="ajoutastuce")
 public class AjoutAstuce implements Serializable{
 	
-	/**
-	 * 
-	 */
+	/**contient la liste des getter et setter 
+	 * necessaire pour faire le lien avec la bdd
+	 **/
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -63,7 +63,5 @@ public class AjoutAstuce implements Serializable{
 
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
-	}
-
-	
+	}	
 }

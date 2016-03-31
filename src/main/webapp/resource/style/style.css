@@ -1985,6 +1985,25 @@ pre
    font-style: normal;
 }
 
+.affichageAstuce
+{
+    display: block; 
+    margin-left: auto;
+    margin-right: auto;
+    border: double;
+    background: white;
+    size: 10px;
+    width: 90%;
+    align-content: center;
+}
+
+.headerAstuce
+{
+    background: #f5bb81;
+    border-bottom-style: solid;
+    border-bottom-color: #9f8a74
+}
+
 .postheader a, 
 .postheader a:link, 
 .postheader a:visited,

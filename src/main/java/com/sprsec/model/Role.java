@@ -16,6 +16,10 @@ import javax.persistence.Table;
 @Table(name="roles")
 public class Role {
 	
+        /**contient la liste des getter et setter 
+	 * necessaire pour faire le lien avec la bdd
+	 **/
+    
 	@Id
 	@GeneratedValue
 	private Integer id;

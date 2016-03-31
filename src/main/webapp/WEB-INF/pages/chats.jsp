@@ -144,19 +144,31 @@
                                     </div>
                                     <br><br><br><br>
                                     <div class="postmetadataheader">
+
                                         <c:if test="${!empty listastuce}">
+
                                             <c:forEach items="${listastuce}" var="ast">
-                                                <tr>
-                                                    <td>${ast.commentaire}</td>
-                                                    - commented by <td>${ast.username}</td>
+                                                <div class="affichageAstuce">
+                                                    <div class="headerAstuce">
+                                                        <tr>
+                                                            Commented by : <td>${ast.username}</td>
+                                                    </div>
+                                                    <textarea rows="3" disabled <td>${ast.commentaire} </textarea></td>
+                                                    <h3>Voter pour cette astuce :</h3>
+
                                                     <form:form commandName="voteplus" action="/voteplus-${ast.idastuce}">
-                                                    <input type="submit" value="pour"/> ${ast.voteplus}
-                                                </form:form>	
-                                                <form:form commandName="votemoins" action="/votemoins-${ast.idastuce}">
-                                                    <input type="submit" value="contre"/> ${ast.vote_moins}
-                                                </form:form>
-                                                </tr>
+                                                        <input type="submit" value="+1" style="color: green"/> ${ast.voteplus}
+                                                    </form:form>	<br>
+                                                    <form:form commandName="votemoins" action="/votemoins-${ast.idastuce}">
+                                                        <input type="submit" value="-1" style="color: red"/> ${ast.vote_moins}
+                                                    </form:form>
+                                                    </tr>
+
+                                                </div>
+                                                <br>
                                             </c:forEach>
+
+
                                         </c:if>
                                         <!-- *************************FIN AJOUT ASTUCE -->
                                     </div>

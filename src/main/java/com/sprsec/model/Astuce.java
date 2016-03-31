@@ -13,9 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="astuce")
 public class Astuce implements Serializable{
-	/**
-	 * 
-	 */
+	/**contient la liste des getter et setter 
+	 * necessaire pour faire le lien avec la bdd
+	 **/
 	private static final long serialVersionUID = 1L;
 
 	@Id

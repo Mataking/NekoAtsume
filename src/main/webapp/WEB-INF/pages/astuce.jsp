@@ -46,16 +46,21 @@
                                         <c:if test="${!empty listeastuce}">
                                             <c:forEach items="${listeastuce}" var="ast">
                                                 <tr>
+                                                <div class="affichageAstuce">
+                                                    <div class="headerAstuce">
                                                     <c:url var="ImgUrl" value="/resource/img/${ast.nomchat}.png" />
-                                                    <td><a href="${ImgUrl}"><img src="${ImgUrl}"></img></a></td>
-                                                    <td>${ast.commentaire}</td>
+                                                    <td><a href="${ImgUrl}"><img src="${ImgUrl}"></img></a></td>                                                                                                     
                                                     - commented by <td>${ast.username}</td> - for <td>${ast.nomchat}</td>
-                                                    <form:form commandName="voteplus" action="/astuceplus-${ast.idastuce}">
-                                                    <input type="submit" value="pour"/> ${ast.voteplus}
-                                                </form:form>	
-                                                <form:form commandName="votemoins" action="/astucemoins-${ast.idastuce}">
-                                                    <input type="submit" value="contre"/> ${ast.vote_moins}
-                                                </form:form>
+                                                    </div>
+                                                    <textarea rows="5" disabled <td>${ast.commentaire} </textarea></td>
+                                                <h3>Voter pour cette astuce :</h3>
+                                                <form:form commandName="voteplus" action="/astuceplus-${ast.idastuce}">
+                                                        <input type="submit" value="+1" style="color: green"/> ${ast.voteplus}
+                                                    </form:form>	<br>
+                                                    <form:form commandName="votemoins" action="/votemoins-${ast.idastuce}">
+                                                        <input type="submit" value="-1" style="color: red"/> ${ast.vote_moins}
+                                                    </form:form>
+                                                </div>
                                                 </tr> <br />
                                             </c:forEach>
                                         </c:if>                 

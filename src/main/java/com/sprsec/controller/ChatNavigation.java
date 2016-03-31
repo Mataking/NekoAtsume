@@ -21,6 +21,8 @@ import com.sprsec.model.User;
 import com.sprsec.service.AstuceService;
 import com.sprsec.service.ChatService;
 
+//classe de navigation a travers les url concernant les chats et la liste des chats
+
 @Controller
 public class ChatNavigation {
 
@@ -30,6 +32,8 @@ public class ChatNavigation {
     @Resource(name = "astuceService")
     AstuceService astuceService;
 
+    //servlet
+    //recupère la liste des chats de la bdd quand /chats est tapé dans l'url du navigateur
     @RequestMapping(value = {"/chats"}, method = RequestMethod.GET)
     public String listChat(Model model) {
         List<Chat> chats = chatService.listeChat();
@@ -38,6 +42,8 @@ public class ChatNavigation {
         return "chats";
     }
 
+    //servlet
+    //recupère la liste des chats rare de la bdd quand /rare est tapé dans l'url du navigateur
     @RequestMapping(value = {"/rare"}, method = RequestMethod.GET)
     public String listChatRare(Model model) {
         List<Chat> chats = chatService.listeChatRare();
@@ -46,6 +52,8 @@ public class ChatNavigation {
         return "chats";
     }
 
+    //servlet
+    //recupère la liste des chats normaux/communs de la bdd quand /communs est tapé dans l'url du navigateur
     @RequestMapping(value = {"/communs"}, method = RequestMethod.GET)
     public String listChatCommun(Model model) {
         List<Chat> chats = chatService.listeChatCommun();
@@ -53,7 +61,8 @@ public class ChatNavigation {
         model.addAttribute("find", false);
         return "chats";
     }
-
+    //servlet
+    //recupère la liste des chats quand on se connecte en admin de la bdd
     @RequestMapping(value = {"/admin-chats"}, method = RequestMethod.GET)
     public String listChatAdm(Model model) {
         List<Chat> chats = chatService.listeChat();
@@ -62,6 +71,8 @@ public class ChatNavigation {
         return "admin-chats";
     }
 
+    //servlet
+    //recupère la liste des astuces des chats de la bdd
     @RequestMapping(value = {"/astuces"}, method = RequestMethod.GET)
     public String listAstuce(Model model) {
         List<Astuce> listAstuce = astuceService.getAllAstuce();
@@ -71,6 +82,8 @@ public class ChatNavigation {
         return "astuce";
     }
 
+    //servlet
+    //recupère la liste des astuces en mode de connexion admin des chats de la bdd
     @RequestMapping(value = {"/admin-astuces"}, method = RequestMethod.GET)
     public String listAstuceAdm(Model model) {
         List<Astuce> listAstuce = astuceService.getAllAstuce();
@@ -78,6 +91,8 @@ public class ChatNavigation {
         return "admin-astuces";
     }
 
+    //servlet POST
+    //recupère le chat quand un nom de chat est entré dans la barre de recherche
     @RequestMapping(value = {"/chats"}, method = RequestMethod.POST)
     public String rechercheChat(@RequestParam("searchText") String nom, Model model) {
         System.out.println(nom);
@@ -87,6 +102,8 @@ public class ChatNavigation {
         return "chats";
     }
 
+    //servlet
+    //recupère la liste des astuces concernant un chat spécifique
     @RequestMapping(value = {"/astuce-{chatname}"}, method = RequestMethod.GET)
     public String getCatAstuce(@PathVariable("chatname") String chatnom, Model model, Principal principal) {
         System.out.println(chatnom);
@@ -105,6 +122,8 @@ public class ChatNavigation {
         return "chats";
     }
 
+    //servlet
+    //recupère la liste des astuces des chats de la bdd
     @RequestMapping(value = {"/astuce-{chatname}"}, method = RequestMethod.POST)
     public String saveAstuce(@ModelAttribute("ajout") AjoutAstuce ajout, @PathVariable("chatname") String chatnom,
             ModelMap model) {
@@ -117,6 +136,8 @@ public class ChatNavigation {
         return "chats";
     }
 
+    //servlet POST
+    //affiche et ajoute un vote plus lors de l'action "vote plus"
     @RequestMapping(value = {"/voteplus-{idastuce}"}, method = RequestMethod.POST)
     public String votePlus(@PathVariable("idastuce") int id, Model model) {
         Astuce astc = astuceService.getAstuceById(id);
@@ -141,7 +162,9 @@ public class ChatNavigation {
         model.addAttribute("listeastuce", listAstuce);
         return "astuce";
     }
-
+    
+    //servlet POST
+    //affiche et ajoute un vote moins lors de l'action "vote moins"
     @RequestMapping(value = {"/votemoins-{idastuce}"}, method = RequestMethod.POST)
     public String voteMoins(@PathVariable("idastuce") int id, Model model) {
         Astuce astc = astuceService.getAstuceById(id);
@@ -176,6 +199,7 @@ public class ChatNavigation {
 		return "admin-users";
 	}
      */
+    
     @RequestMapping(value = "/supprimerastuce-{id}")
     public String removeAstuce(@PathVariable("id") int id, Model model) {
         astuceService.deleteAstuce(id);

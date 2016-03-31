@@ -14,9 +14,9 @@ import javax.persistence.Table;
 @Table(name = "tablechat")
 public class Chat implements Serializable{
 
-	/**
-	 * 
-	 */
+	/**contient la liste des getter et setter 
+	 * necessaire pour faire le lien avec la bdd
+	 **/
 	private static final long serialVersionUID = 1L;
 
 	@Id
